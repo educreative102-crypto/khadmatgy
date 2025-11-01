@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تسجيل الدخول | خدمتجي 🚀</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h1 id="role-title">تسجيل الدخول</h1>
+    <form class="login-form">
+      <input type="text" placeholder="رقم الهاتف" required />
+      <input type="password" placeholder="كلمة المرور" required />
+      <button type="submit">تسجيل الدخول</button>
+    </form>
+    <p class="back" onclick="goBack()">🔙 رجوع</p>
+  </div>
+
+  <script>
+    // تحديد نوع المستخدم من الرابط
+    const params = new URLSearchParams(window.location.search);
+    const role = params.get("role");
+
+    const roleTitle = document.getElementById("role-title");
+    if (role === "customer") roleTitle.textContent = "تسجيل الدخول - زبون";
+    else if (role === "driver") roleTitle.textContent = "تسجيل الدخول - سائق";
+    else if (role === "dispatcher") roleTitle.textContent = "تسجيل الدخول - ديسباتشر (فريلانسر)";
+    else roleTitle.textContent = "تسجيل الدخول";
+
+    function goBack() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

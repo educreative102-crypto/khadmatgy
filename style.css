@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Tajawal", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  color: #fff;
+  background: #0a0d13;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* --------------------------- */
+/* الخلفية الغازية المتناوبة */
+/* --------------------------- */
+.neon-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.neon-bg::before,
+.neon-bg::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(circle at 30% 30%, rgba(0,123,255,0.18), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(255,213,74,0.18), transparent 60%);
+  animation: glowMove1 12s infinite alternate ease-in-out;
+  filter: blur(100px);
+}
+
+.neon-bg::after {
+  background: radial-gradient(circle at 70% 30%, rgba(255,213,74,0.2), transparent 60%),
+              radial-gradient(circle at 30% 70%, rgba(0,123,255,0.15), transparent 60%);
+  animation: glowMove2 14s infinite alternate ease-in-out;
+  mix-blend-mode: lighten;
+  opacity: 0.8;
+}
+
+@keyframes glowMove1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(10%, -10%) scale(1.1); }
+  100% { transform: translate(-10%, 10%) scale(1); }
+}
+
+@keyframes glowMove2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-10%, 10%) scale(1.1); }
+  100% { transform: translate(10%, -10%) scale(1); }
+}
+
+/* --------------------------- */
+/* رأس الصفحة والنصوص          */
+/* --------------------------- */
+.app-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 22px 0;
+  font-size: 1.8em;
+  font-weight: 700;
+  background: linear-gradient(90deg, #007bff, #ffd54a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(0,123,255,0.4);
+}
+
+/* --------------------------- */
+/* البطاقات / الأزرار          */
+/* --------------------------- */
+.app-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  padding: 24px 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 25px rgba(0,123,255,0.1);
+  transition: transform 0.25s ease, box-shadow 0.3s ease, filter 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0,123,255,0.25), 0 0 40px rgba(255,213,74,0.2);
+  filter: brightness(1.1);
+}
+
+.card:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 35px rgba(255,213,74,0.3);
+}
+
+.icon-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.icon {
+  width: 70px;
+  height: 50px;
+  display: block;
+  filter: drop-shadow(0 0 5px rgba(0,123,255,0.3));
+}
+
+.card-text h3 {
+  margin: 4px 0 2px;
+  font-size: 17px;
+  color: #007bff;
+}
+
+.card-text p {
+  font-size: 13px;
+  color: #ffd54a;
+}
+
+.app-footer {
+  position: relative;
+  text-align: center;
+  padding: 14px 0;
+  font-size: 13px;
+  opacity: 0.6;
+  z-index: 2;
+}
